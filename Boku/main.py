@@ -1,50 +1,31 @@
 import logger
 
+import matplotlib.pyplot as plt
+from matplotlib.patches import RegularPolygon
+import numpy as np
 
-#coluna vai ser fila + 6 -input
-col_translator = {
-    "A": 0,
-    "B": 1,
-    "C": 2,
-    "D": 3,
-    "E": 4,
-    "F": 5,
-    "G": 6,
-    "H": 7,
-    "I": 8,
-    "J": 9,
-}
-
-def create_board():
-    board = []
+def crete_coordinates():
+    pos = []
+    row, col = -5, 1
     for i in range(6):
-        row = []
-        row.append([0] * (i+5))
-        board.append(row[0])
+        for j in range(i+5):
+            pos.append([row, col])
+            col += 1
+        row += 1
+        col = - i
+    row = 1 
+    col = -4
     for i in range(5):
-        row = []
-        row.append([0] * (9-i))
-        board.append(row[0])
-    return board
-
-def show_board(board):
-    for i in range(11):
-        if i >= 6:
-            print(" " * (i-5))
-        print("__" * len(board[i]))
-        for j in range(len(board[i])):
-            print("|", end="")
-            if board[i][j] == 0:
-                print("0", end="")
-            elif board[i][j] == 1:
-                print("X", end="")
-            else:
-                print("O", end="")
-            
-        print("|")
-    print("___________")
-    
+        for j in range(9-i):
+            pos.append([row,col])
+            col = -3+j
+        row = 2 + i
+        col = -4
+    return pos
 
 
-board = create_board()
-show_board(board)
+crete_coordinates()
+
+
+
+
