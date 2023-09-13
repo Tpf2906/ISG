@@ -90,6 +90,7 @@ position_to_coordinate = {
 
 coordinate_to_position = reverse_dictionary(position_to_coordinate)
 
-
-
+board_dict ={}
+for key in position_to_coordinate:
+    board_dict[key] = 0
 
